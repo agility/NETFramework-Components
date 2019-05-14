@@ -232,7 +232,6 @@ The Blog component depends on a [Custom Field Type](https://github.com/agility/C
                                 r = r.replace(new RegExp("[μνξο]", 'g'), "i");
                                 r = r.replace(new RegExp("ρ", 'g'), "n");
                                 r = r.replace(new RegExp("[ςστυφ]", 'g'), "o");
-                                r = r.replace(new RegExp("", 'g'), "oe");
                                 r = r.replace(new RegExp("[ωϊϋό]", 'g'), "u");
                                 r = r.replace(new RegExp("[ύÿ]", 'g'), "y");
 
