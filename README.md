@@ -1,6 +1,10 @@
 # Agility .NET Framework Components
 This repository represents the source code for the Agility Blog and Comments components. It also contains a sample ASP.NET MVC4 site to illustrate how they interface with a website.
 
+## Demo Website
+You can view an example *vanilla* implementation of the Blog and Comments components on this site:
+[Demo Site](http://components-blank-mvc-test.stage.publishwithagility.com)
+
 ## Requirements
 In order to use this, you need:
 - An active Agility instance, targeting the ASP.NET MVC Framework
@@ -14,7 +18,7 @@ In order to use this, you need:
 ## Component Architecture
 These components are designed to be portable and can easily be added to any new or existing ASP.NET MVC website.
 
-Each component type (i.e. **Blog** or **Comments**) are self-contained in their own .NET project. They each have their own MVC controllers and actions that correspond to the **Output Type** of the associated modules for each component. The MVC website simply needs to have a reference to .NET project.
+Each component type (i.e. **Blog** or **Comments**) are self-contained in their own .NET project. They each have their own MVC controllers and actions that correspond to the **Output Type** of the associated modules for each component. The MVC website needs to have a reference to the Component .NET project (i.e. Blog and/or Comments).
 
 Unlike a typical Agility MVC integration, these components do not rely on using strongly-typed objects. This means you can add these components to your website without even downloading the strongly-typed API for the Modules/Content Definitions.
 
