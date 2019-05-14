@@ -95,7 +95,7 @@ When using **Inline Code**, the following files are dependancies of the Blog Com
   - agility-base
   - agility-blog
 - **JS**
-  - agility
+  - agility (dependancy on jQuery)=)
   - agility.ugc.api
   - custom-field-types (to enable the **URL** Custom Field Type for Manager Input Forms)
 - **Templates**
@@ -134,7 +134,7 @@ When using the */Agility.Components.Files* directory, the following files are de
     - agility-base.css
     - agility-blog.css
   - **JS**
-    - agility.js (still loaded from Inline Code, by default, controlled by page template)
+    - agility.js - (dependancy on jQuery) (still loaded from Inline Code, by default, controlled by page template)
     - agility.ugc.api.js (still loaded from Inline Code, by default, controlled by page template)
   - **Views**
     - agility-blog-AuthorDetailsModule.cshtml
@@ -321,7 +321,7 @@ When using **Inline Code**, the following files are dependancies of the Comments
   - agility-base
   - agility-comments
 - **JS**
-  - agility
+  - agility (dependancy on jQuery)
   - agility.ugc.api
 - **Templates**
   - agility-comments-CommentsModule
