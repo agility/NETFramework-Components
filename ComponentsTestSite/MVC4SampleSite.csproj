@@ -180,13 +180,7 @@
     <Content Include="AgilityAPI.svc" />
     <Content Include="AgilityRedirector.htm" />
     <Content Include="AgilityWebsiteService.svc" />
-    <Content Include="Content\css\bootstrap-theme.css" />
-    <Content Include="Content\css\bootstrap-theme.min.css" />
-    <Content Include="Content\css\bootstrap-tour.css" />
-    <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\font-awesome.min.css" />
-    <Content Include="Content\css\jquery.snippet.css" />
+    <Content Include="Content\css\site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -246,17 +240,9 @@
     <Content Include="Scripts\Agility.CMS.API.js" />
     <Content Include="Scripts\Agility.js" />
     <Content Include="Scripts\Agility.UGC.API.js" />
-    <Content Include="Scripts\bootstrap-tour.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery.cookie.js" />
-    <Content Include="Scripts\jquery.scrollTo.min.js" />
-    <Content Include="Scripts\jquery.snippet.js" />
-    <Content Include="Scripts\jquery.tmpl.js" />
-    <Content Include="Scripts\sh_csharp.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -290,10 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\css\bootstrap-theme.css.map" />
-    <Content Include="Content\css\bootstrap.css.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />

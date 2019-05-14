@@ -16,29 +16,30 @@
     <!-- Begin Meta Variables from Custom Code -->
     @Html.GetHttpMetaVariables()
     <!-- End Meta Variables from Custom Code -->
-
     <!-- Begin Agility Page/Global Top Scripts -->
     @{Html.RenderAgilityTopScripts();}
     <!-- End Agiilty Page/Global Top Scripts -->
-
     <!-- Begin Agility Meta Tags/Additional Header Code -->
     @{Html.RenderAgilityCssOnly();}
     <!-- End Agility Meta Tags/Additional Header Code -->
-
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    @System.Web.Optimization.Styles.Render("~/bundles/css")
+    @System.Web.Optimization.Scripts.Render("~/bundles/js")
+
 </head>
 <body>
-   
+
 
     @RenderBody()
 
-   
+
     <script type="text/javascript">@Html.Raw(Agility.UGC.API.WCF.UGCAPIUtil.GetDataServiceInitializationScript(-1))</script>
+
+
 
     <!-- Begin Agility Bottom Scripts and Global Scripts -->
     @{Html.RenderAgilityScriptsNoJQuery();}

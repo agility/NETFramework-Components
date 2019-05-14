@@ -34,7 +34,7 @@ You must have the appropriate Module/Content Definitions, Pages, Page Template, 
 1. Clone this repository
 2. Open the *Components.sln* file in the root of the repo
 3. Open the /ComponentsTestSite/web.config file and set your **websiteName**, and **securityKey**
-```
+```xml
 ...
   <agility.web>
     <settings applicationName="Agility Sample MVC4" developmentMode="true" contentCacheFilePath="c:\AgilityContent\" debugAgilityComponentFiles="false">
@@ -47,7 +47,7 @@ You must have the appropriate Module/Content Definitions, Pages, Page Template, 
 ...
 ```
 4. Set the **Agility_API_Key** (UGC Key) and **Agility_API_Password** (UGC Password)
-```
+```xml
 <appSettings>
     <!-- Start Agility App Settings -->
     <add key="Agility_API_Url" value="https://ugc.agilitycms.com/Agility-UGC-API-JSONP.svc" />
@@ -55,8 +55,9 @@ You must have the appropriate Module/Content Definitions, Pages, Page Template, 
     <add key="Agility_API_Password" value="{{Agility_API_Password}}" />
 </appSettings>
 ```
-5. **Build and Run** the MVC4 website by clicking *Debug* > *Start/Start Without Debugging*
-6. If your instance only has the */blog* pages in the page tree, then the */blog* page will be the default homepage, otherwise navigate directly to *http://localhost:{port}/blog*
+5. Ensure the *MVC4SampleSite* is set as your default startup project
+6. **Build and Run** the MVC4 website by clicking *Debug* > *Start/Start Without Debugging*
+7. If your instance only has the */blog* pages in the page tree, then the */blog* page will be the default homepage, otherwise navigate directly to *http://localhost:{port}/blog*
 
 
 ## Blog Component
@@ -117,7 +118,7 @@ When using **Inline Code**, the following files are dependancies of the Blog Com
   - Blog Template
 
 If you wish to use code within your project and NOT use Inline Code, you can change this behaviour by setting *debugAgilityComponentFiles="true"* property in the MVC website web.config:
-```
+```xml
 <agility.web>
     <settings ... debugAgilityComponentFiles="true">
     ...
@@ -155,7 +156,7 @@ When using the */Agility.Components.Files* directory, the following files are de
 **Note:** The *Blog Template* will still use its Inline Code file if it is still configured that way in Agility. You can optionally change the *Output Template* for that to be a *Partial View* in your MVC website. The default code in the *Blog Template* will also try and load the **agility.js** and **agility.ugc.api.js** file from Inline Code. You can modify this behaviour by removing the the code loading those files and integrating those JS dependancies in your website bundle.
 
 Default *Blog Template* code (for illustration purposes):
-```
+```html
 @using Agility.Components.Blog.Classes
 <div id="agility-blg-template">
     <div class="agility-container">
@@ -176,8 +177,8 @@ Default *Blog Template* code (for illustration purposes):
 </div>
 
 @* Comment out these scripts if they are natively loaded on the site *@
-@*@Html.AgilityJavascript("agility")
-@Html.AgilityJavascript("agilityugcapi")*@ 
+@Html.AgilityJavascript("agility")
+@Html.AgilityJavascript("agilityugcapi")
 ```
  
 ### Enabling the URL Custom Field Type
@@ -326,7 +327,7 @@ When using **Inline Code**, the following files are dependancies of the Comments
   - agility-comments-CommentsModule
 
 If you wish to use code within your project and NOT use Inline Code, you can change this behaviour by setting *debugAgilityComponentFiles="true"* property in the MVC website web.config:
-```
+```xml
 <agility.web>
     <settings ... debugAgilityComponentFiles="true">
     ...
@@ -349,7 +350,7 @@ When using the */Agility.Components.Files* directory, the following files are de
 **Note:** Comments are typically loaded on the same Page Template that the Blog Component uses. The *Blog Template* will still use its Inline Code file if it is still configured that way in Agility. You can optionally change the *Output Template* for that to be a *Partial View* in your MVC website. The default code in the *Blog Template* will also try and load the **agility.js** and **agility.ugc.api.js** file from Inline Code. You can modify this behaviour by removing the the code loading those files and integrating those JS dependancies in your website bundle.
 
 Default *Blog Template* code (for illustration purposes):
-```
+```html
 @using Agility.Components.Blog.Classes
 <div id="agility-blg-template">
     <div class="agility-container">
