@@ -1,0 +1,13 @@
+﻿@using Agility.Web.Components
+@using Agility.Components.Blog.Classes
+@using Agility.Components.Blog.Extensions
+@using Agility.Components.Blog.ViewModels
+@model BlogLinkViewModel
+
+
+<div class="agility-blg-history-module agility-module agility-panel">
+    <h4 class="agility-panel-header">@Model.Configuration["BlogHistoryLabel"]</h4>
+    <div class="agility-blg-history agility-panel-body">
+        @Html.Partial(AgilityComponents.TemplatePath("Blog-Links"), Model)
+    </div>
+</div>

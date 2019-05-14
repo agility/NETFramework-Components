@@ -1,0 +1,80 @@
+﻿.agility-blg-seperator:after {
+  content: "|";
+  font-size: larger;
+}
+ul.agility-blg-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.agility-blg-listed-post {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid;
+}
+.agility-blg-listed-post h1,
+.agility-blg-listed-post h2,
+.agility-blg-listed-post h3 {
+  margin-top: 0;
+}
+.agility-blg-listed-post .agility-blg-post-excerpt {
+  margin: 20px 0;
+}
+.agility-blg-listed-post .agility-blg-img-wpr {
+  display: block;
+}
+.agility-blg-listed-post-mini {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.agility-blg-post-textblob {
+  margin: 25px 0;
+}
+.agility-blg-related-posts {
+  margin: 25px 0;
+}
+.agility-panel ul.agility-blg-link-list {
+  max-height: 500px;
+  overflow: auto;
+}
+.agility-panel ul.agility-blg-link-list li {
+  margin: 10px 0;
+}
+.agility-blg-featured-post-module .agility-blg-listed-post {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.agility-blg-post-details-module .agility-blg-post-attributes {
+  margin-bottom: 25px;
+}
+.agility-blg-post-details-module ul.agility-blg-link-list {
+  display: inline;
+}
+.agility-blg-post-details-module ul.agility-blg-link-list li {
+  display: inline;
+}
+.agility-blg-post-details-module ul.agility-blg-link-list li:after {
+  content: ',';
+}
+.agility-blg-post-details-module ul.agility-blg-link-list li:last-child:after {
+  content: '';
+}
+.agility-blg-post-details-module .agility-blg-cat-attributes {
+  float: left;
+}
+.agility-blg-post-details-module .agility-blg-leave-comment {
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .agility-blg-listed-post .agility-blg-img-wpr {
+    margin-bottom: 25px;
+  }
+  .agility-blg-listed-post .agility-blg-img-wpr img {
+    margin: 0 auto;
+  }
+  .agility-blg-post-details-module .agility-blg-cat-attributes {
+    float: none;
+  }
+}
+/*# sourceMappingURL=agility-blog.css.map */

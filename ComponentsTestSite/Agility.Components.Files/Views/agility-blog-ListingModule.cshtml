@@ -1,0 +1,26 @@
+﻿@using Agility.Web.Components
+@using Agility.Components.Blog.Classes
+@using Agility.Components.Blog.ViewModels
+@model BlogListingViewModel
+
+<div class="agility-blg-listing-module agility-module">
+
+    @if (!string.IsNullOrEmpty(Model.Title)) { 
+    <h1>@Model.Title</h1>
+    }
+
+    @foreach (var p in Model.Posts)
+    {
+        @Html.Partial(AgilityComponents.TemplatePath("Blog-ListedPost"), new PostViewModel()
+        {
+            Post = p,
+            Configuration = Model.Configuration,
+            CurrentCategory = Model.CurrentCategory
+        })
+    }
+
+    @if (BlogUtils.GetBool(Model.Module["EnablePagination"])) { 
+        @Html.Partial(AgilityComponents.TemplatePath("Blog-Pagination"), Model.Pagination)
+    }
+    
+</div>

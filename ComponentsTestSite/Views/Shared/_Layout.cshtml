@@ -1,0 +1,48 @@
+﻿@using MVC4SampleSite
+@using Agility.Web.Extensions
+@using Agility.Web.Plugins
+<!doctype html>
+<html>
+<head>
+
+
+    @Html.SetPageTitle((string)(ViewBag.Title), true)
+    <title>@Html.GetPageTitle()</title>
+    <link rel="shortcut icon" href="@Html.ResolveUrl("~/favicon.ico")" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Begin Meta Variables from Custom Code -->
+    @Html.GetHttpMetaVariables()
+    <!-- End Meta Variables from Custom Code -->
+
+    <!-- Begin Agility Page/Global Top Scripts -->
+    @{Html.RenderAgilityTopScripts();}
+    <!-- End Agiilty Page/Global Top Scripts -->
+
+    <!-- Begin Agility Meta Tags/Additional Header Code -->
+    @{Html.RenderAgilityCssOnly();}
+    <!-- End Agility Meta Tags/Additional Header Code -->
+
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+   
+
+    @RenderBody()
+
+   
+    <script type="text/javascript">@Html.Raw(Agility.UGC.API.WCF.UGCAPIUtil.GetDataServiceInitializationScript(-1))</script>
+
+    <!-- Begin Agility Bottom Scripts and Global Scripts -->
+    @{Html.RenderAgilityScriptsNoJQuery();}
+    <!-- End Agility Bottom Scripts and Global Scripts -->
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+﻿@using Agility.Web.Extensions
+@using Agility.Components.Blog.ViewModels
+@using Agility.Components.Blog.Classes
+@model PostViewModel
+
+<div class="agility-blg-post-excerpt">
+    @Html.Raw(BlogUtils.GetPostDescription(Model.Post, "Excerpt", Model.Configuration["AutoExcerptLength"], Model.OverrideExcerptLength))
+</div>

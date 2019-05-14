@@ -1,0 +1,40 @@
+﻿@using Agility.Components.Blog.Extensions
+@using Agility.Components.Blog.Classes
+@model Agility.Components.Blog.ViewModels.PostViewModel
+
+
+@helper BuildAuthorLink()
+{
+    var author = BlogUtils.GetItemByID(Model.Post["Author"], Model.Post["AuthorID"]);
+    if (author != null)
+    {
+        string name = author["Title"] as string;
+        string url = author.BlogDynamicUrl(Model.Configuration);
+
+        <span class="agility-blg-by-label">@Model.Configuration["ByLabel"]</span>
+        <a href="@Html.ResolveUrl(url)" class="agility-blg-author-link" title="@name" target="_self">@name</a>
+        <span class="agility-blg-seperator"></span>
+    }
+}
+
+@helper BuildPostDate()
+{
+    string dateFormat = Model.Configuration["DateFormat"] as string;
+    if (string.IsNullOrEmpty(dateFormat))
+    {
+        dateFormat = "MMM d, yyyy";
+    }
+    DateTime postDate = DateTime.MinValue;
+    DateTime.TryParse((Model.Post["Date"] ?? "").ToString(), out postDate);
+
+    if (postDate != DateTime.MinValue)
+    {
+        <span class="blog-date">@postDate.ToString(dateFormat)</span>
+    }
+}
+
+<div class="agility-blg-post-attributes">
+    @BuildAuthorLink()
+    @BuildPostDate()
+</div>
+

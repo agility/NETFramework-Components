@@ -1,0 +1,152 @@
+﻿@using Agility.Components.Comments.Classes
+@model Agility.Components.Comments.ViewModels.CommentsViewModel
+
+<div id="agility-comments-for-@Model.RelatedContentID" class="agility-comments-module agility-module"
+     data-content-id="@Model.RelatedContentID"
+     data-recordtypename="@Model.CommentsRecordTypeName"
+     data-profile-recordtypename="@Model.Config["UGCRecordTypeName"]"
+     data-pagesize="@Model.Config["CommentsPerPage"]"
+     data-default-sort="@Model.Config["DefaultSort"]"
+     data-facebook="@Model.FacebookLoginEnabled"
+     data-twitter="@Model.TwitterLoginEnabled"
+     data-dateformat="@Model.Config["DateFormat"]"
+     data-comment-required-message="@Model.Config["CommentRequiredLabel"]"
+     data-id-required-message="@Model.Config["IDRequiredLabel"]"
+     data-no-comments-message="@Model.Config["NoCommentsLabel"]"
+     data-allowed-html-tags="@Model.Config["AllowedHTML"]"
+     data-email-required="@string.Format("{0}", Model.Config["EmailRequired"]).ToLower()"
+     data-email-required-message="@Model.Config["EmailRequiredLabel"]"
+     data-email-unique-message="@Model.Config["EmailUniqueMessage"]"
+     data-default-user-avatar="@CommentsUtils.GetAttachmentUrl(Model.Config.GetAttachment("DefaultAvatar"))"
+     data-comments-config-referencename="@Model.Config.ReferenceName">
+    <a name="agility-comments"></a>
+    <hr />
+    <h4><span class="agility-comments-count">(0)</span> @Model.Config["Title"]</h4>
+
+
+
+    @*<div id="agility-comments-sort">
+            <a role="menuitem" tabindex="-1" href="javascript:;" data-value="DESC">@Model.Config["SortByRecentLabel"]</a>
+            <a role="menuitem" tabindex="-1" href="javascript:;" data-value="ASC">@Model.Config["SortByOldestLabel"]</a>
+        </div>*@
+
+    <div id="agility-comments-add" class="agility-comments-new-container">
+
+        <div>
+
+            <div class="agility-comments-left-align">
+                <img class="agility-comments-current-avatar agility-img-rounded" data-thumb="?w=48&h=48" src="" style="display: none;" />
+            </div>
+
+            <div class="agility-comments-right-align">
+                <textarea class="agility-comments-input agility-form-control" placeholder="@Model.Config["CommentPlaceholderLabel"]"></textarea>
+                <div class="agility-text-right agility-comments-submit-container" style="display: none;">
+                    <div class="agility-comments-allowed-html-container">
+                        <span class="allowed-html">@Model.Config["AllowedHTMLLabel"] @Model.Config["AllowedHTML"]</span>
+                    </div>
+                    <div class="agility-comments-actions-container" style="display: none;">
+                        <a href="javascript:;" class="agility-comments-submit-btn agility-btn">@Model.Config["SubmitAsLabel"] <span class="agility-comments-user-name"></span></a><a href="javascript:;" class="agility-comments-logout-btn agility-btn">Logout</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <div class="agility-comments-left-align"></div>
+            <div class="agility-comments-right-align">
+                <div class="agility-comments-submission-success" style="display: none;">@Model.Config["CommentSubmissionLabel"]</div>
+                <div class="agility-comments-validation-container" style="display: none;">
+                    <ul>
+                        <li class="agility-comments-validation"></li>
+                        <li class="agility-comments-submission-error"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="agility-comments-id-required" style="display: none;">
+            <div class="agility-comments-left-align"></div>
+            <div class="agility-comments-right-align">
+                <div class="agility-row">
+                    <div class="agility-col-md-4">
+                        @if (Model.FacebookLoginEnabled || Model.TwitterLoginEnabled)
+                        {
+                            <div class="agility-comments-label agility-comments-sign-in-as">@Model.Config["SignInLabel"]</div>
+                        }
+                        @if (Model.FacebookLoginEnabled)
+                        {
+                            <div class="agility-comments-facebook-connect" data-app-id="@Model.Config["FacebookAppID"]" title="@Model.Config["LoginwithFacebookLabel"]"></div>
+                        }
+
+                        @if (Model.TwitterLoginEnabled)
+                        {
+                            <div class="agility-comments-twitter-connect" title="@Model.Config["LoginWithTwitterLabel"]"></div>
+                        }
+                    </div>
+
+                    <div class="agility-col-md-2">
+                        <img class="agility-comments-login-loader" style="display: none;" src="http://cdn.agilitycms.com/content-manager/images/component-images/ajax-loader.gif" alt="Loading..." />
+                    </div>
+
+                    <div class="agility-col-md-6">
+                        <div class="agility-comments-profile-details">
+                            <div class="agility-comments-post-as agility-comments-label">@Model.Config["PostAsLabel"]</div>
+
+                            <div class="agility-form-group">
+                                <input type="text" class="agility-comments-name-txt agility-form-control" placeholder="@Model.Config["NamePlaceholder"]">
+                            </div>
+
+                            <div class="agility-comments-profile-details-expanded" style="display: none;">
+                                <div class="agility-form-group">
+                                    <input type="text" class="agility-comments-email-txt agility-form-control" placeholder="@Model.Config["EmailPlaceholder"]">
+                                </div>
+                                <a href="javascript:;" class="agility-comments-profile-save-btn agility-btn">@Model.Config["SaveProfileLabel"]</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="agility-comments-loader" class="agility-text-center" style="display: none;">
+            <img src="http://cdn.agilitycms.com/content-manager/images/component-images/ajax-loader.gif" alt="Loading..." />
+        </div>
+
+    </div>
+
+
+    <div id="agility-comments-list">
+
+        <div id="agility-comments-row-template" class="agility-hidden">
+            <div class="agility-comments-row">
+                <div class="agility-comments-left-align">
+                    <img class="agility-comments-avatar agility-img-rounded" data-thumb="?w=48&h=48&config=@Model.Config.ReferenceName" src="" style="display: none;" />
+                </div>
+                <div class="agility-comments-right-align">
+                    <div class="agility-comments-details">
+                        <span class="agility-comments-name"></span> <span class="agility-comments-date"></span>
+                        <div class="agility-comments-post"></div>
+                    </div>
+                    <a href="javascript:;" class="agility-comments-reply-btn">@Model.Config["ReplyLabel"]</a>
+                    <a href="javascript:;" class="agility-comments-cancel-reply-btn" style="display: none;">@Model.Config["CancelReplyLabel"]</a>
+                    <div class="agility-comments-reply-container"></div>
+                </div>
+
+                <div class="agility-row">
+                    <div class="agility-col-xs-1 agility-col-sm-1"></div>
+                    <div class="agility-col-xs-11 agility-col-sm-11">
+                        <div class="agility-comments-child-comment-container"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="agility-comments-container"></div>
+        <div id="agility-comments-pager-container" class="agility-pagination-container"></div>
+    </div>
+</div>

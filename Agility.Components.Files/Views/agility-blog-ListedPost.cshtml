@@ -1,0 +1,44 @@
+﻿@using Agility.Web.Components
+@using Agility.Components.Blog.Extensions
+@using Agility.Components.Blog.ViewModels
+@using Agility.Components.Blog.Classes
+@model PostViewModel
+
+
+@helper BuildReadMore() { 
+    string readMoreLabel = Model.Configuration["ReadMoreLabel"] as string;
+    if (!string.IsNullOrEmpty(readMoreLabel))
+    {
+        <div class="agility-btn-wpr">
+            <a class="agility-btn agility-bnt-default" title="@readMoreLabel" href="@Html.ResolveUrl(Model.Post.BlogDynamicUrl(Model.Configuration, Model.CurrentCategory))" target="_self">@readMoreLabel</a>
+        </div>
+    }
+}
+
+<div class="agility-blg-listed-post">
+    <div class="agility-row">
+        @if (BlogUtils.HasPostImage(Model.Configuration, Model.Post, PostImageType.Listing)) { 
+        <div class="agility-col-sm-4">
+            <a class="agility-blg-img-wpr" href="@Html.ResolveUrl(Model.Post.BlogDynamicUrl(Model.Configuration, Model.CurrentCategory))" target="_self" title="@Model.Post["Title"]">
+                @Html.Partial(AgilityComponents.TemplatePath("Blog-PostImage"), new PostImageViewModel()
+                {
+                    Post = Model.Post,
+                    Type = PostImageType.Listing,
+                    Configuration = Model.Configuration,
+                    Width = (Model.ListedImageWidth > 0 ? Model.ListedImageWidth : 220),
+                    Height = (Model.ListedImageHeight > 0 ? Model.ListedImageHeight : 140)
+                })
+            </a>
+        </div>
+        }
+        <div class="@(BlogUtils.HasPostImage(Model.Configuration, Model.Post, PostImageType.Listing) ? "agility-col-sm-8": "agility-col-sm-12") agility-blg-post-details">
+            <a href="@Html.ResolveUrl(Model.Post.BlogDynamicUrl(Model.Configuration, Model.CurrentCategory))" target="_self" title="@Model.Post["Title"]">
+                <h2>@Model.Post["Title"]</h2>
+            </a>
+            @Html.Partial(AgilityComponents.TemplatePath("Blog-PostAttributes"), Model)
+            @Html.Partial(AgilityComponents.TemplatePath("Blog-PostExcerpt"), Model)
+            @BuildReadMore()
+        </div>
+    </div>
+
+</div>

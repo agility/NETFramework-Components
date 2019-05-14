@@ -1,0 +1,11 @@
+﻿@using Agility.Components.Blog.Classes
+@model Agility.Components.Blog.ViewModels.BlogAuthorImageViewModel
+
+@{
+    string imageUrl = BlogUtils.GetAuthorImageUrl(Model.Configuration, Model.Author, Model.Width, Model.Height);
+}
+
+@if (!string.IsNullOrEmpty(imageUrl))
+{
+        <img class="agility-blg-author-image agility-img-responsive" src="@imageUrl" alt="@BlogUtils.GetAuthorImageAlt(Model.Configuration, Model.Author)" />
+}
